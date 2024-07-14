@@ -21,7 +21,7 @@ body {
     animation: preLoad-text-stroke 4s infinite alternate;
     stroke-width: 2;
     stroke: #365FA0;
-    font-size: 75px;
+    font-size: 3rem;
 }
 
 #preLoader-content #slogan-content-text {
@@ -29,7 +29,7 @@ body {
     animation: preLoad-text-stroke 4s infinite alternate;
     stroke-width: 2;
     stroke: #365FA0;
-    font-size: 30px;
+    font-size: 1rem;
 }
 
 @keyframes preLoad-text-stroke {
