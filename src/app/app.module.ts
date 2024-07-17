@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -43,7 +44,8 @@ import { ModifyStocksComponent } from './modify-stocks/modify-stocks.component';
     MatTableModule, 
     MatSortModule, 
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()

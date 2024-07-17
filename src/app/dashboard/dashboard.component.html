@@ -1,4 +1,6 @@
-<!-- <app-navbar></app-navbar> -->
-<!-- <router-outlet></router-outlet> -->
-
-<h1>dashboard</h1>
+<h1 class="text text-center">DASHBOARD</h1>
+<div *ngFor="let companyType of companyTypeList; let index = index">
+    <h3>{{index}}</h3>
+    <h3>{{companyType.companyTypeId}}</h3>
+    <h3>{{companyType.companyTypeDescription}}</h3>
+</div>
