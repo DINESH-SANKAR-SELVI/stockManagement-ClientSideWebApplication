@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
+import { CoupenListComponent } from './coupen-list.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('CoupenListComponent', () => {
+  let component: CoupenListComponent;
+  let fixture: ComponentFixture<CoupenListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DashboardComponent]
+      declarations: [ CoupenListComponent ]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(DashboardComponent);
+
+    fixture = TestBed.createComponent(CoupenListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
