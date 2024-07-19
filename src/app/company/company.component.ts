@@ -6,6 +6,7 @@ import { CompanyType } from '../data-types';
 import { ApiService } from '../api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanyFactoryComponent } from '../company-factory/company-factory.component';
+import { SnackbarService } from '../snackbar.service';
 
 @Component({
     selector: 'app-company',
@@ -16,7 +17,7 @@ export class CompanyComponent implements OnInit, AfterViewInit {
 
     source : CompanyType[]=[];
 
-    displayedColumns: string[] = ['companyDescription', 'ceo', 'email', 'status'];
+    displayedColumns: string[] = ['companyDescription', 'ceo', 'email', 'status', 'action'];
     dataSource!: MatTableDataSource<CompanyType>;
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,7 +25,8 @@ export class CompanyComponent implements OnInit, AfterViewInit {
 
     constructor(
         private apiService: ApiService,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private snackBar: SnackbarService
     ) {
         
     }
@@ -35,6 +37,7 @@ export class CompanyComponent implements OnInit, AfterViewInit {
 
     findAllCompanyToTable() {
         this.apiService.getAllCompanys().subscribe(result => {
+            this.source=result;
             this.dataSource = new MatTableDataSource(result);
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
@@ -55,7 +58,14 @@ export class CompanyComponent implements OnInit, AfterViewInit {
     }
 
     newCompanyFactory(data: CompanyType) {
-        this.apiService.newCompanyFactory(data);
+        this.apiService.newCompanyFactory(data).subscribe(result=> {
+            this.source.push(result);
+            this.dataSource = new MatTableDataSource(this.source);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+
+            this.snackBar.openSnackBar("Company Created..!");
+        });
     }
 
     ngAfterViewInit() {
