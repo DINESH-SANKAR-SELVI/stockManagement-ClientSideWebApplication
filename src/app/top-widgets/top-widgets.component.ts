@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faLocation,
   faShop,
@@ -18,9 +19,13 @@ export class TopWidgetsComponent implements OnInit {
   faBoxes = faBoxes;
   faMoneyBill = faMoneyBill;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  goToCompany(){
+    this.router.navigate(['./company']);
   }
 
 }

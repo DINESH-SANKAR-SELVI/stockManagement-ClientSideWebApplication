@@ -5,6 +5,7 @@ import { MediaComponent } from './media/media.component';
 import { PagesComponent } from './pages/pages.component';
 import { SettingsComponent } from './settings/settings.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { CompanyComponent } from './company/company.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'pages', component: PagesComponent},
   {path: 'media', component: MediaComponent},
   {path: 'settings', component: SettingsComponent},
+  {path: 'company', component: CompanyComponent},
   {path: '**', component: DashboardComponent}
 ];
 

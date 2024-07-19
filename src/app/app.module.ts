@@ -20,6 +20,15 @@ import { SalesByMonthComponent } from './sales-by-month/sales-by-month.component
 import { SalesByCategoryComponent } from './sales-by-category/sales-by-category.component';
 import { LastFewTransactionsComponent } from './last-few-transactions/last-few-transactions.component';
 import { MainComponent } from './main/main.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ChartModule } from 'angular-highcharts';
+import { CompanyComponent } from './company/company.component';
+
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule} from '@angular/material/sort';
+import { MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -39,13 +48,21 @@ import { MainComponent } from './main/main.component';
     SalesByMonthComponent,
     SalesByCategoryComponent,
     LastFewTransactionsComponent,
-    MainComponent
+    MainComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    FontAwesomeModule,
+    ChartModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatTableModule, 
+    MatSortModule, 
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
