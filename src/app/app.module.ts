@@ -22,13 +22,20 @@ import { LastFewTransactionsComponent } from './last-few-transactions/last-few-t
 import { MainComponent } from './main/main.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartModule } from 'angular-highcharts';
-import { CompanyComponent } from './company/company.component';
+
 
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
 import { MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CompanyComponent } from './company/company.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { CompanyFactoryComponent } from './company-factory/company-factory.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -49,7 +56,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SalesByCategoryComponent,
     LastFewTransactionsComponent,
     MainComponent,
-    CompanyComponent
+   CompanyComponent,
+   CompanyFactoryComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule, 
     MatTableModule, 
     MatSortModule, 
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule,
+    MatButton,
+    MatIconModule,
+    MatDialogModule, 
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

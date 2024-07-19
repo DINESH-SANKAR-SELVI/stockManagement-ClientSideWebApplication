@@ -1,96 +1,74 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { CompanyType } from '../data-types';
+import { ApiService } from '../api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CompanyFactoryComponent } from '../company-factory/company-factory.component';
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrl: './company.component.css'
+    selector: 'app-company',
+    templateUrl: './company.component.html',
+    styleUrls: ['./company.component.css']
 })
-export class CompanyComponent implements AfterViewInit {
+export class CompanyComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+    source : CompanyType[]=[];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+    displayedColumns: string[] = ['companyDescription', 'ceo', 'email', 'status'];
+    dataSource!: MatTableDataSource<CompanyType>;
 
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    constructor(
+        private apiService: ApiService,
+        private dialog: MatDialog
+    ) {
+        
     }
-  }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+    ngOnInit(): void {    
+        this.findAllCompanyToTable();
+    }
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+    findAllCompanyToTable() {
+        this.apiService.getAllCompanys().subscribe(result => {
+            this.dataSource = new MatTableDataSource(result);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+        }, (error) => {
+            console.warn(error);
+        });
+    }
+    openCompanyFactory(createOrUpdate: boolean) {
+        const dialogRef = this.dialog.open(CompanyFactoryComponent, {
+            data: {
+              createOrUpdate: createOrUpdate,
+            },
+          });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.newCompanyFactory(result);
+        });
+    }
+
+    newCompanyFactory(data: CompanyType) {
+        this.apiService.newCompanyFactory(data);
+    }
+
+    ngAfterViewInit() {
+        // this.dataSource.paginator = this.paginator;
+        // this.dataSource.sort = this.sort;
+    }
+
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+
+        if (this.dataSource.paginator) {
+            this.dataSource.paginator.firstPage();
+        }
+    }
 }
