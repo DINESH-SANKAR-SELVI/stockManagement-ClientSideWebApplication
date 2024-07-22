@@ -36,7 +36,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CompanyFactoryComponent } from './company-factory/company-factory.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -77,7 +77,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDialogModule, 
     MatButtonModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

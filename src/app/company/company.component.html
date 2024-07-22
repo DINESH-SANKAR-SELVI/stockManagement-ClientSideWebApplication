@@ -34,7 +34,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
       <td mat-cell *matCellDef="let row"> 
         <mat-icon class="m-1 ml-0 mt-0 mb-0 text text-secondary">remove_red_eye</mat-icon>
-        <mat-icon class="text text-primary" (click)="openCompanyFactory(false)">edit</mat-icon>
+        <mat-icon class="text text-primary" (click)="openCompanyFactory(false, row)">edit</mat-icon>
       </td>
     </ng-container>
 

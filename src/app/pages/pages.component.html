@@ -1,1 +1,8 @@
-<h1>Pages</h1>
+<section class="vh-100 vw-100 bg-danger">
+    <mat-grid-list cols="4" rowHeight="100px">
+        @for (tile of tiles; track tile) {
+        <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows"
+            [style.background]="tile.color">{{tile.text}}</mat-grid-tile>
+        }
+    </mat-grid-list>
+</section>
