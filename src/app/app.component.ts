@@ -11,13 +11,12 @@ interface SideNavToggle {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'sidenav-with-multilevel-menu';
 
-  isSideNavCollapsed = false;
-  screenWidth = 0;
+  // isSideNavCollapsed = false;
+  // screenWidth = 0;
 
-  onToggleSideNav(data: SideNavToggle): void {
-    this.screenWidth = data.screenWidth;
-    this.isSideNavCollapsed = data.collapsed;
-  }
+  // onToggleSideNav(data: SideNavToggle): void {
+  //   this.screenWidth = data.screenWidth;
+  //   this.isSideNavCollapsed = data.collapsed;
+  // }
 }

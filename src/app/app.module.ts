@@ -36,6 +36,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CompanyFactoryComponent } from './company-factory/company-factory.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { TabletemplateComponent } from './tabletemplate/tabletemplate.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     LastFewTransactionsComponent,
     MainComponent,
    CompanyComponent,
-   CompanyFactoryComponent
+   CompanyFactoryComponent,
+   TabletemplateComponent
   ],
   imports: [
     BrowserModule,
