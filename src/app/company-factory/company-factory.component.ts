@@ -39,9 +39,12 @@ export class CompanyFactoryComponent {
       email: [''],
       addressPostalCode: [''],
       numberOfEmployees: [0],
-      ceo: [''],
-      name: ['']
+      ceo: ['']
     });
+
+    if(this.data.companyTypeDetails != null){
+      this.companyForm.patchValue(this.data.companyTypeDetails);
+    }
   }
 
   onSubmit() {

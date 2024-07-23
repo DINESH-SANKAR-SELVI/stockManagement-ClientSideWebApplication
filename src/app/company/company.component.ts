@@ -45,10 +45,11 @@ export class CompanyComponent implements OnInit, AfterViewInit {
             console.warn(error);
         });
     }
-    openCompanyFactory(createOrUpdate: boolean) {
+    openCompanyFactory(createOrUpdate: boolean, data: CompanyType | null = null) {
         const dialogRef = this.dialog.open(CompanyFactoryComponent, {
             data: {
               createOrUpdate: createOrUpdate,
+              companyTypeDetails: data
             },
           });
 
