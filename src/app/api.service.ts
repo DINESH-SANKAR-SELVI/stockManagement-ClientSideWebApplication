@@ -11,14 +11,14 @@ export class ApiService {
   constructor(private httpMethods: HttpClient) { }
 
   getAllCompaniesAsList(): Observable<any>{
-    return this.httpMethods.get<any>("https://stockmanagement-server.onrender.com/company/list");
+    return this.httpMethods.get<any>("company/list");
   }
 
   getAllCompanies(): Observable<CompanyType[]>{
-    return this.httpMethods.get<CompanyType[]>("https://stockmanagement-server.onrender.com/company");
+    return this.httpMethods.get<CompanyType[]>("company");
   }
 
   newCompanyFactory(data: CompanyType): Observable<CompanyType> {
-    return this.httpMethods.post<CompanyType>("https://stockmanagement-server.onrender.com/company",data);
+    return this.httpMethods.post<CompanyType>("company",data);
   }
 }

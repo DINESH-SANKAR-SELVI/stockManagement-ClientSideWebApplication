@@ -30,7 +30,7 @@ import { MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CompanyComponent } from './company/company.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { CompanyFactoryComponent } from './company-factory/company-factory.component';
@@ -38,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TabletemplateComponent } from './tabletemplate/tabletemplate.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { CommonInterceptorService } from './common-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDatepickerModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: CommonInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
