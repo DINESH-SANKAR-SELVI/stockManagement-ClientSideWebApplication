@@ -1,13 +1,28 @@
-<div class="container-fluid m-0 p-0">
+<!-- <div class="container-fluid m-0 p-0">
     <div class="header bg-dark" style="padding-left: 6%;">
         <app-header></app-header>
     </div>
-    <!-- <div class="main-container"> -->
-    <!-- <div class="side-nav"> -->
+
     <app-sidenav class="bg-danger"></app-sidenav>
-    <!-- </div> -->
     <div class="main" class="bg-success">
-        <app-body ></app-body> <!--[collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"-->
-    </div>
-</div>
+        <app-body></app-body> <!--[collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"-->
 <!-- </div> -->
+<!-- </div> -->
+
+<!--8 </div> -->
+
+<!-- 5<div class="main-container"> -->
+<!-- 6<div class="side-nav"> -->
+<!--13 </div> -->
+
+<section class="container-fluid vh-100 vw-100 bg-danger m-0 p-0">
+    <mat-grid-list cols="6" rowHeight="10%" gutterSize="0px">
+
+        <mat-grid-tile colspan="1" rowspan="10" style="background: lightgreen"><app-sidenav></app-sidenav></mat-grid-tile>
+
+        <mat-grid-tile colspan="5" rowspan="1" style="background: lightblue"><app-header></app-header></mat-grid-tile>
+
+        <mat-grid-tile colspan="5" rowspan="9" style="background: lightpink"><app-body></app-body></mat-grid-tile>
+
+    </mat-grid-list>
+</section>

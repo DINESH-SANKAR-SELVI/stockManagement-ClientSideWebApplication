@@ -1,6 +1,8 @@
 .header {
-  height: 60px;
-  padding: 20px 50px;
+  /* height: 60px; */
+  /* padding: 20px 50px; */
+  height: 100%;
+  width: 100%;
   background-color: #012645;
   color: #fff;
   display: flex;
