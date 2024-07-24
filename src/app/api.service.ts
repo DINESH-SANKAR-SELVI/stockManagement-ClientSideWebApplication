@@ -10,7 +10,11 @@ export class ApiService {
 
   constructor(private httpMethods: HttpClient) { }
 
-  getAllCompanys(): Observable<CompanyType[]>{
+  getAllCompaniesAsList(): Observable<any>{
+    return this.httpMethods.get<any>("https://stockmanagement-server.onrender.com/company/list");
+  }
+
+  getAllCompanies(): Observable<CompanyType[]>{
     return this.httpMethods.get<CompanyType[]>("https://stockmanagement-server.onrender.com/company");
   }
 

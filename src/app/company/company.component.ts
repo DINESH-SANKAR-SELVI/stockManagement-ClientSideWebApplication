@@ -36,7 +36,7 @@ export class CompanyComponent implements OnInit, AfterViewInit {
     }
 
     findAllCompanyToTable() {
-        this.apiService.getAllCompanys().subscribe(result => {
+        this.apiService.getAllCompanies().subscribe(result => {
             this.source=result;
             this.dataSource = new MatTableDataSource(result);
             this.dataSource.paginator = this.paginator;

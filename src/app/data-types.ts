@@ -4,7 +4,7 @@ export interface DataTypes {
 export interface CompanyType {
     companyId: string;
     companyDescriptio: string;
-    companyType: string;
+    companyTypeId: string;
     status: string;
     industry: string;
     addressCountry: string;

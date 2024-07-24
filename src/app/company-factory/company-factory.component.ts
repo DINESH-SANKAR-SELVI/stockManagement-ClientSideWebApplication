@@ -21,10 +21,11 @@ export class CompanyFactoryComponent {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data, "data");
     this.companyForm = this.fb.group({
       companyId: [''],
       companyDescription: [''],
-      companyType: [''],
+      companyTypeId: [''],
       status: [''],
       industry: [''],
       addressCountry: [''],
