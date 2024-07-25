@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Login</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                        <mat-form-field class="form-group">
+                            <mat-label>Username</mat-label>
+                            <input matInput type="text" id="username" name="username" [(ngModel)]="username" required>
+                        </mat-form-field>
+                        <mat-form-field class="form-group">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" id="password" name="password" [(ngModel)]="password"
+                                required>
+                        </mat-form-field>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

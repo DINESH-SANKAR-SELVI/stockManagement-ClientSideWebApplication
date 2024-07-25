@@ -23,7 +23,6 @@ import { MainComponent } from './main/main.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartModule } from 'angular-highcharts';
 
-
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
 import { MatTableModule} from '@angular/material/table';
@@ -34,11 +33,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { CompanyFactoryComponent } from './company-factory/company-factory.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TabletemplateComponent } from './tabletemplate/tabletemplate.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonInterceptorService } from './common-interceptor.service';
+import { LoginComponent } from './login/login.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CommonInterceptorService } from './common-interceptor.service';
     MainComponent,
    CompanyComponent,
    CompanyFactoryComponent,
-   TabletemplateComponent
+   TabletemplateComponent,
+   LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -79,9 +81,11 @@ import { CommonInterceptorService } from './common-interceptor.service';
     MatIconModule,
     MatDialogModule, 
     MatButtonModule,
+    FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: CommonInterceptorService, multi: true }],
   bootstrap: [AppComponent]

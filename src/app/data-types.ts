@@ -1,5 +1,9 @@
 export interface DataTypes {
 }
+export interface LoginType{
+    username: string;
+    password: string;
+}
 
 export interface CompanyType {
     companyId: string;
