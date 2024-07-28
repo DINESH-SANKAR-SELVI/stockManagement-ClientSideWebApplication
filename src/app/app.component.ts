@@ -10,10 +10,11 @@ interface SideNavToggle {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   ngOnInit(): void {
-      localStorage.setItem('serverHostURL', 'https://stockmanagement-server.onrender.com/');
+    localStorage.clear();
+    localStorage.setItem('serverHostURL', 'https://stockmanagement-server.onrender.com/');
   }
 
   // isSideNavCollapsed = false;

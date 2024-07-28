@@ -7,11 +7,12 @@ import { SettingsComponent } from './settings/settings.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CompanyComponent } from './company/company.component';
 import { LoginComponent } from './login/login.component';
+import { canactivateGuard } from './canactivate.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [canactivateGuard], data: {expectedRole :'Developer'}},
   {
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
