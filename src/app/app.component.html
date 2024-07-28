@@ -16,13 +16,25 @@
 <!--13 </div> -->
 
 <section class="container-fluid vh-100 vw-100 m-0 p-0">
-    <mat-grid-list cols="6" rowHeight="10%" gutterSize="0px">
+    <mat-grid-list cols="17" rowHeight="10%" gutterSize="0px">
 
-        <mat-grid-tile colspan="1" rowspan="10" style="background: lightgreen"><app-sidenav></app-sidenav></mat-grid-tile>
+        <mat-grid-tile  colspan="1" rowspan="10" style="background: lightgreen;">
+            <div class="w-100 h-100 m-0 p-0 bg-light">
+                <app-sidenav></app-sidenav>
+            </div>
+        </mat-grid-tile>
 
-        <mat-grid-tile colspan="5" rowspan="1" style="background: lightblue"><app-header></app-header></mat-grid-tile>
+        <mat-grid-tile colspan="16" rowspan="1" style="background: lightblue;">
+            <div class="w-100 h-100 m-0 p-0 bg-light">
+                <app-header></app-header>
+            </div>
+        </mat-grid-tile>
 
-        <mat-grid-tile colspan="5" rowspan="9" style="background: lightpink"><app-body></app-body></mat-grid-tile>
+        <mat-grid-tile colspan="16" rowspan="9" style="background: lightpink; vertical-align: top;">
+        <div class="h-100 w-100 m-0 p-0 overflow-scroll" style="background-color: rgb(211, 211, 211)">
+            <app-body></app-body>
+        </div>
+        </mat-grid-tile>
 
     </mat-grid-list>
 </section>

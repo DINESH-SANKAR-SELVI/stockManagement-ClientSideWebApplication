@@ -5,6 +5,7 @@ import {
   faShop,
   faBoxes,
   faMoneyBill,
+  faBoxOpen
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -18,6 +19,7 @@ export class TopWidgetsComponent implements OnInit {
   faShop = faShop;
   faBoxes = faBoxes;
   faMoneyBill = faMoneyBill;
+  faBoxOpen = faBoxOpen;
 
   constructor(private router: Router) { }
 
