@@ -18,14 +18,15 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.username && this.password) {
-      // this.api.loginServer({ username: this.username, password: this.password } as LoginType)
-      // .subscribe(response =>{ console.log(response)
-      localStorage.setItem('userContext', btoa(JSON.stringify({ userName: this.username, password: this.password, role: ['Developer'], isAuthendicated: true })));
-
-      this.router.navigate(['dashboard']);
-      this.snackbar.openSnackBar(this.username.concat(" LogIn Successfully..!"));
-
-      // });
+      this.api.loginServer({ userName: this.username, password: this.password } as LoginType)
+        .subscribe(response => {
+          localStorage.setItem('userContext', btoa(JSON.stringify(response)));
+          this.router.navigate(['dashboard']);
+          this.snackbar.openSnackBar(this.username.concat(" LogIn Successfully..!"));
+        }, (error) => {
+          console.error(error);
+          this.snackbar.openSnackBar(this.username.concat(" Login Failed..!"));
+        });
     }
   }
 }

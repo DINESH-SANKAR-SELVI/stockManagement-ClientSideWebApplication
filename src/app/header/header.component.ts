@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SnackbarService } from '../snackbar.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private snackBar: SnackbarService) { }
 
   ngOnInit(): void {
   }
 
+  clearSession(){
+    localStorage.clear();
+    this.snackBar.openSnackBar("cleared");
+  }
 }

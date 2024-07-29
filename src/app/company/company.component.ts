@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { SnackbarService } from '../snackbar.service';
     templateUrl: './company.component.html',
     styleUrls: ['./company.component.css']
 })
-export class CompanyComponent implements OnInit, AfterViewInit {
+export class CompanyComponent implements OnInit {
 
     source : CompanyType[]=[];
 
@@ -65,13 +65,8 @@ export class CompanyComponent implements OnInit, AfterViewInit {
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
-            this.snackBar.openSnackBar("Company Created..!");
+            this.snackBar.openSnackBar("Company Created/Modified..!");
         });
-    }
-
-    ngAfterViewInit() {
-        // this.dataSource.paginator = this.paginator;
-        // this.dataSource.sort = this.sort;
     }
 
     applyFilter(event: Event) {

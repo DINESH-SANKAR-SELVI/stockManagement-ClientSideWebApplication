@@ -12,20 +12,20 @@ import { canactivateGuard } from './canactivate.guard';
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [canactivateGuard], data: {expectedRole :'Developer'}},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
   {
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
   },
-  {path: 'statistics', component: StatisticsComponent},
+  {path: 'statistics', component: StatisticsComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
   {
     path: 'coupens',
     loadChildren: () => import('./coupens/coupens.module').then(m => m.CoupensModule)
   },
-  {path: 'pages', component: PagesComponent},
-  {path: 'media', component: MediaComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'company', component: CompanyComponent},
+  {path: 'pages', component: PagesComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
+  {path: 'media', component: MediaComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
+  {path: 'settings', component: SettingsComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
+  {path: 'company', component: CompanyComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
   {path: '**', component: DashboardComponent}
 ];
 

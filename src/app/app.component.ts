@@ -13,15 +13,6 @@ interface SideNavToggle {
 export class AppComponent implements OnInit {
 
   ngOnInit(): void {
-    localStorage.clear();
     localStorage.setItem('serverHostURL', 'https://stockmanagement-server.onrender.com/');
   }
-
-  // isSideNavCollapsed = false;
-  // screenWidth = 0;
-
-  // onToggleSideNav(data: SideNavToggle): void {
-  //   this.screenWidth = data.screenWidth;
-  //   this.isSideNavCollapsed = data.collapsed;
-  // }
 }
