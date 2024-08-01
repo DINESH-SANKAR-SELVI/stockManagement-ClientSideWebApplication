@@ -35,12 +35,9 @@ export class AuthService {
   hasRole(role: string): boolean {
     if (this.isLoggedIn()) {
       try {
-        // Decode the JWT token
         const decodedToken: any = jwtDecode(this.userContext.token);
         
-        // Check if roles exist in the decoded token
         if (decodedToken.roles) {
-          // Split roles by comma and check if the array includes the specified role
           const rolesArray = decodedToken.roles.split(',');
           return rolesArray.includes(role);
         }

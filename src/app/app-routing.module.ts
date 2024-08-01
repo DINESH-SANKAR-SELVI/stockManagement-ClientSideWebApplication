@@ -8,10 +8,12 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { CompanyComponent } from './company/company.component';
 import { LoginComponent } from './login/login.component';
 import { canactivateGuard } from './canactivate.guard';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
   {
     path: 'products',
@@ -26,7 +28,7 @@ const routes: Routes = [
   {path: 'media', component: MediaComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
   {path: 'settings', component: SettingsComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
   {path: 'company', component: CompanyComponent, canActivate: [canactivateGuard], data: {expectedRole :'DEVELOPER'}},
-  {path: '**', component: DashboardComponent}
+  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({

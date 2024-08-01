@@ -40,6 +40,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonInterceptorService } from './common-interceptor.service';
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { MatCardModule } from '@angular/material/card';
    CompanyComponent,
    CompanyFactoryComponent,
    TabletemplateComponent,
-   LoginComponent
+   LoginComponent,
+   SignupComponent
   ],
   imports: [
     BrowserModule,
