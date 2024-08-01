@@ -16,15 +16,14 @@ export class AuthService {
   constructor() { }
 
   isLoggedIn(): boolean {
-
     if (this.value != null) {
       this.decodedValue = atob(this.value)
       if (this.decodedValue) {
         this.userContext = JSON.parse(this.decodedValue);
         if (this.userContext != null || this.userContext != undefined) {
-          if (this.userContext.isAuthendicated){
+          if (this.userContext.isAuthendicated) {
             console.log("isauth", this.userContext.isAuthendicated)
-          return true;
+            return true;
           }
         }
       }
@@ -32,11 +31,15 @@ export class AuthService {
     return false;
   }
 
+  getAuthToken(): string {
+    return this.userContext?.token;
+  }
+
   hasRole(role: string): boolean {
     if (this.isLoggedIn()) {
       try {
         const decodedToken: any = jwtDecode(this.userContext.token);
-        
+
         if (decodedToken.roles) {
           const rolesArray = decodedToken.roles.split(',');
           return rolesArray.includes(role);
