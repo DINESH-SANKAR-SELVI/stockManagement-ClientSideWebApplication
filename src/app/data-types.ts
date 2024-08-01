@@ -1,15 +1,13 @@
 export interface DataTypes {
 }
 export interface LoginType {
-    userName: string;
+    loginId: string;
     password: string;
 }
 
-export interface LoginResponseType {
-    password: string,
-    role: string[],
-    userName: string,
-    isAuthendicated: boolean
+export interface LoginResponseType {   
+        token: string;
+        isAuthendicated: boolean;
 }
 
 export interface CompanyType {

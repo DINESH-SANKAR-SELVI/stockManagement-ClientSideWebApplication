@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,7 @@ export class AuthService {
         this.userContext = JSON.parse(this.decodedValue);
         if (this.userContext != null || this.userContext != undefined) {
           if (this.userContext.isAuthendicated){
+            console.log("isauth", this.userContext.isAuthendicated)
           return true;
           }
         }
@@ -30,8 +33,20 @@ export class AuthService {
   }
 
   hasRole(role: string): boolean {
-    if(this.isLoggedIn()){
-      return this.userContext.role.includes(role);
+    if (this.isLoggedIn()) {
+      try {
+        // Decode the JWT token
+        const decodedToken: any = jwtDecode(this.userContext.token);
+        
+        // Check if roles exist in the decoded token
+        if (decodedToken.roles) {
+          // Split roles by comma and check if the array includes the specified role
+          const rolesArray = decodedToken.roles.split(',');
+          return rolesArray.includes(role);
+        }
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
     }
     return false;
   }

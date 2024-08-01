@@ -11,21 +11,21 @@ import { SnackbarService } from '../snackbar.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username!: string;
+  loginId!: string;
   password!: string;
 
   constructor(private api: ApiService, private router: Router, private auth: AuthService, private snackbar: SnackbarService) { }
 
   onSubmit() {
-    if (this.username && this.password) {
-      this.api.loginServer({ userName: this.username, password: this.password } as LoginType)
+    if (this.loginId && this.password) {
+      this.api.loginServer({ loginId: this.loginId, password: this.password } as LoginType)
         .subscribe(response => {
           localStorage.setItem('userContext', btoa(JSON.stringify(response)));
           this.router.navigate(['dashboard']);
-          this.snackbar.openSnackBar(this.username.concat(" LogIn Successfully..!"));
+          this.snackbar.openSnackBar(this.loginId.concat(" LogIn Successfully..!"));
         }, (error) => {
           console.error(error);
-          this.snackbar.openSnackBar(this.username.concat(" Login Failed..!"));
+          this.snackbar.openSnackBar(this.loginId.concat(" Login Failed..!"));
         });
     }
   }

@@ -12,7 +12,7 @@ export class ApiService {
   constructor(private httpMethods: HttpClient) { }
 
   loginServer(data: LoginType): Observable<LoginResponseType>{
-    const headers = new HttpHeaders().set("userName", data.userName).set("password",data.password);
+    const headers = new HttpHeaders().set("loginId", data.loginId).set("password",data.password);
     return this.httpMethods.post<LoginResponseType>("login",{},{headers: headers});
   }
 
