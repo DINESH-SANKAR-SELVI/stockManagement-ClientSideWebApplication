@@ -1,4 +1,5 @@
-<div class="vh-100 vw-100 d-flex justify-content-center align-items-center" style="position: fixed; top:0px; right:0px;z-index: 10;background-color: rgb(221,221,221);">
+<div class="vh-100 vw-100 d-flex justify-content-center align-items-center"
+    style="position: fixed; top:0px; right:0px;z-index: 10;background-color: rgb(221,221,221);">
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="d-flex flex-column shadow-lg m-5 p-5 rounded bg-light">
         <h1 class="text text-center text-primary">LogIn</h1>
         <mat-form-field class="form-group m-3">
@@ -7,10 +8,16 @@
         </mat-form-field>
         <mat-form-field class="form-group m-3">
             <mat-label>Password</mat-label>
-            <input matInput type="password" id="password" name="password" [(ngModel)]="password" required>
+            <input matInput type="password" id="password" name="password" [(ngModel)]="password" [type]="hide() ? 'password' : 'text'"  required>
+
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
         </mat-form-field>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
 
-    <h4> Create Free Account ?<a routerLinkActive="active" routerLink="/signup"> Register</a> With shopspark</h4>
+    <h4> Create Free Account ?<a routerLink="" (click)="makeSignup()"> Register</a> With shopspark</h4>
 </div>

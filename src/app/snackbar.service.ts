@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MessageLogoutComponent } from './signup/signup.component';
+import { MessageLogoutComponent } from './message-logout/message-logout.component';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,9 @@ export class SnackbarService {
   OpenLogOutSnackBar() {
     this._snackBar.openFromComponent(MessageLogoutComponent, {
       data: {
-        message: "Your Session Was Ended..!",
-        buttonText: "Okay"
+        message: "Do You Want End Your Session..!",
+        successButtonText: "Yes",
+        FaildedButtonText: "No"
       },
       horizontalPosition: 'center',
       verticalPosition: 'top'

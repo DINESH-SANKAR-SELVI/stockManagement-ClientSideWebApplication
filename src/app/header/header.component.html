@@ -3,8 +3,13 @@
 
   <div class="navFont">Masters</div>
 
+  <div class="d-flex">
+    <div class="m-2"><mat-icon>g_translate</mat-icon></div>
+    <div class="m-2"><mat-icon>highlight</mat-icon></div>
+  </div>
+
   <div class="user">
-    <div class="user-name">ADMIN</div>
-    <div class="user-image" style="cursor: pointer;"  (click)="clearSession()">DD</div>
+    <div class="user-name">{{userName}}</div>
+    <div class="user-image" style="cursor: pointer;" (click)="clearSession()">DD</div>
   </div>
 </div>

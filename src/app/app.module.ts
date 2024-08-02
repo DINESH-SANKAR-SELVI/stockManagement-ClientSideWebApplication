@@ -41,6 +41,8 @@ import { CommonInterceptorService } from './common-interceptor.service';
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { SignupComponent } from './signup/signup.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MessageLogoutComponent } from './message-logout/message-logout.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { SignupComponent } from './signup/signup.component';
    CompanyFactoryComponent,
    TabletemplateComponent,
    LoginComponent,
-   SignupComponent
+   SignupComponent,
+   MessageLogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import { SignupComponent } from './signup/signup.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: CommonInterceptorService, multi: true }],
   bootstrap: [AppComponent]

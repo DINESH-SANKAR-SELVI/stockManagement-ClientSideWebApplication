@@ -1,8 +1,16 @@
+// need to split types as requestDataType && ResponseDataType
 export interface DataTypes {
 }
 export interface LoginType {
     loginId: string;
     password: string;
+}
+
+export interface RegisterUserType{
+    userName: string;
+    loginId: string;
+    password: string;
+    email: string;
 }
 
 export interface LoginResponseType {   

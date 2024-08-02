@@ -1,8 +1,8 @@
-import { Component, Inject, inject } from '@angular/core';
-import { SnackbarService } from '../snackbar.service';
-import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogRef } from '@angular/cdk/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-signup',
@@ -11,34 +11,23 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
 
-  constructor(private snackbar: SnackbarService) { }
+  registerForm!: FormGroup;
 
-}
+  constructor(private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<SignupComponent>) {
 
-@Component({
-  selector: 'app-msg-logout',
-  template: `<h2> {{data.message}}</h2>
-            <button class="btn btn-danger m-3" (click)="confirmLogout()">{{data.buttonText}}</button> 
-            <button class='btn btn-secondary' (click)="cancelLogOut()">Cancel</button>`,
-  styles:`h2{ color: 'red'}`
-})
-export class MessageLogoutComponent{
-
-  constructor(
-    @Inject(MAT_SNACK_BAR_DATA) public data: any,
-    private snackbarRef: MatSnackBarRef<MessageLogoutComponent>,
-    private auth: AuthService,
-    private router: Router
-  ) { }
-
- confirmLogout(){
-  this.auth.removeAllLocalStorage();
-  this.snackbarRef.dismiss();
-  this.router.navigate(['login']);
- }
-
- cancelLogOut(){
-  this.snackbarRef.dismiss();
- }
+    this.registerForm = this._formBuilder.group({
+      loginId: ['', Validators.required],
+      password: ['', Validators.required],
+      userName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+  makeSignUp() {
+    if (this.registerForm.valid) {
+      this.dialogRef.close(this.registerForm.getRawValue());
+    } else {
+      console.error('Register Form is invalid..!');
+    }
+  }
 
 }

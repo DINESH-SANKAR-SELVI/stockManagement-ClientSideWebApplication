@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnackbarService } from '../snackbar.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,15 @@ import { SnackbarService } from '../snackbar.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private snackBar: SnackbarService) { }
+  userName: String ='user_name';
+  constructor(private snackBar: SnackbarService, private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.userName = this.auth.getUserName();
+    console.log(this.userName)
   }
 
   clearSession(){
-    // localStorage.clear();
-    // this.snackBar.openSnackBar("cleared");
     this.snackBar.OpenLogOutSnackBar();
   }
 }

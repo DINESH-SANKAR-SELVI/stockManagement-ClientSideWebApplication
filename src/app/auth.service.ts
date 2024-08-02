@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { LoginResponseType } from './data-types';
 
 
 @Injectable({
@@ -19,6 +20,10 @@ export class AuthService {
     localStorage.setItem('serverHostURL', pathurl);
   }
 
+  setUserContext(userContext: LoginResponseType){
+    localStorage.setItem('userContext', btoa(JSON.stringify(userContext)));
+  }
+
   removeAllLocalStorage(){
     localStorage.clear();
     this.setContextPath();
@@ -31,7 +36,6 @@ export class AuthService {
         this.userContext = JSON.parse(this.decodedValue);
         if (this.userContext != null || this.userContext != undefined) {
           if (this.userContext.isAuthendicated) {
-            console.log("isauth", this.userContext.isAuthendicated)
             return true;
           }
         }
@@ -42,6 +46,13 @@ export class AuthService {
 
   getAuthToken(): string {
     return this.userContext?.token;
+  }
+
+  getUserName(): String{
+    console.log(this.userContext.token);
+    const decodedToken: any = jwtDecode(this.userContext.token);
+    console.log(decodedToken)
+    return decodedToken.sub; 
   }
 
   hasRole(role: string): boolean {
