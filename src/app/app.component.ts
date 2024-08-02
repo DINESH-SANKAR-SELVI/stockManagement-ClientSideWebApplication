@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -12,7 +13,9 @@ interface SideNavToggle {
 })
 export class AppComponent implements OnInit {
 
+  constructor(private auth: AuthService) { }
+
   ngOnInit(): void {
-    localStorage.setItem('serverHostURL', 'https://stockmanagement-server.onrender.com/');
+    this.auth.setContextPath();
   }
 }

@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
   }
 
   clearSession(){
-    localStorage.clear();
-    this.snackBar.openSnackBar("cleared");
+    // localStorage.clear();
+    // this.snackBar.openSnackBar("cleared");
+    this.snackBar.OpenLogOutSnackBar();
   }
 }

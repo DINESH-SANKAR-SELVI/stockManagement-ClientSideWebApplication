@@ -15,6 +15,15 @@ export class AuthService {
 
   constructor() { }
 
+  setContextPath(pathurl: string='https://stockmanagement-server.onrender.com/'){
+    localStorage.setItem('serverHostURL', pathurl);
+  }
+
+  removeAllLocalStorage(){
+    localStorage.clear();
+    this.setContextPath();
+  }
+
   isLoggedIn(): boolean {
     if (this.value != null) {
       this.decodedValue = atob(this.value)
