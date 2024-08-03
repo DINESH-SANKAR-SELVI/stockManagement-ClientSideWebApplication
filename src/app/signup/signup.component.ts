@@ -12,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class SignupComponent {
 
   registerForm!: FormGroup;
+  hide: boolean = true;
 
   constructor(private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<SignupComponent>) {
 
@@ -28,6 +29,10 @@ export class SignupComponent {
     } else {
       console.error('Register Form is invalid..!');
     }
+  }
+
+  changeVisibility() {
+    this.hide = this.hide ? false : true
   }
 
 }

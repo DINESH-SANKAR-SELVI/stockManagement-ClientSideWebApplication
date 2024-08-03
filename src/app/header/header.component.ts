@@ -9,12 +9,12 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  userName: String ='user_name';
-  constructor(private snackBar: SnackbarService, private auth: AuthService) { }
+  // userName: String ='user_name';
+
+  constructor(private snackBar: SnackbarService, public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.userName = this.auth.getUserName();
-    console.log(this.userName)
+    console.log("header", this.auth.getUserName())
   }
 
   clearSession(){

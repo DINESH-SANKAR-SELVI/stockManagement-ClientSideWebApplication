@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { LoginType, RegisterUserType } from '../data-types';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ import { NavigatorService } from '../navigator.service';
 export class LoginComponent {
   loginId!: string;
   password!: string;
+  hide = true;
 
   constructor(
     private api: ApiService,
@@ -40,16 +41,12 @@ export class LoginComponent {
     }
   }
 
-  hide = signal(true);
-  clickEvent(event: MouseEvent) {
-    this.hide.set(!this.hide());
-    event.stopPropagation();
-  }
 
   makeSignup() {
     const dialogRef = this.dialog.open(SignupComponent);
-    dialogRef.afterClosed().subscribe(result => { 
-      this.api.registerUser(result as RegisterUserType).subscribe( response => {
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.api.registerUser(result as RegisterUserType).subscribe(response => {
         this.auth.setUserContext(response);
         this.navigator.toDashboard();
         this.snackbar.openSnackBar(this.loginId.concat(" LogIn Successfully..!"));
@@ -58,5 +55,9 @@ export class LoginComponent {
         this.snackbar.openSnackBar(this.loginId.concat(" Login Failed..!"));
       });
     });
+  }
+
+  changeVisibility() {
+    this.hide = this.hide ? false : true
   }
 }

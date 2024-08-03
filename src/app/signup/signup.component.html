@@ -10,10 +10,15 @@
         </mat-form-field>
         <mat-form-field class="m-2">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="password" placeholder="password" required>
+          <input matInput formControlName="password" placeholder="password" [type]="hide ? 'password' : 'text'" required>
+          
+          <button mat-icon-button matSuffix (click)="changeVisibility()">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
         </mat-form-field>
         <div>
-          <button class="btn btn-outline-success" matStepperNext>Confirm & Next</button>
+          <button class="btn btn-outline-secondary" mat-dialog-close matStepperNext>Cancel</button>
+          <button class="btn btn-outline-success m-2" matStepperNext>Confirm & Next</button>
         </div>
       </form>
     </mat-step>

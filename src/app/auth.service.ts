@@ -16,15 +16,15 @@ export class AuthService {
 
   constructor() { }
 
-  setContextPath(pathurl: string='https://stockmanagement-server.onrender.com/'){
+  setContextPath(pathurl: string = 'https://stockmanagement-server.onrender.com/') {
     localStorage.setItem('serverHostURL', pathurl);
   }
 
-  setUserContext(userContext: LoginResponseType){
+  setUserContext(userContext: LoginResponseType) {
     localStorage.setItem('userContext', btoa(JSON.stringify(userContext)));
   }
 
-  removeAllLocalStorage(){
+  removeAllLocalStorage() {
     localStorage.clear();
     this.setContextPath();
   }
@@ -45,14 +45,26 @@ export class AuthService {
   }
 
   getAuthToken(): string {
-    return this.userContext?.token;
+    if (this.value != null) {
+      this.decodedValue = atob(this.value)
+      if (this.decodedValue) {
+        this.userContext = JSON.parse(this.decodedValue);
+        if (this.userContext != null || this.userContext != undefined) {
+          return this.userContext.token
+        }
+      }
+    }
+    return "";
   }
 
-  getUserName(): String{
-    console.log(this.userContext.token);
-    const decodedToken: any = jwtDecode(this.userContext.token);
-    console.log(decodedToken)
-    return decodedToken.sub; 
+  getUserName(): String {
+    let token = this.getAuthToken();
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      console.log(decodedToken)
+      return decodedToken.sub;
+    }
+    return ""
   }
 
   hasRole(role: string): boolean {
